@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
-import "./Crowd.sol";
+import "./CrowdFunding.sol";
 import "./VoteCrowdPros.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Platform is Ownable{
     address private _owner; // 合约管理员
@@ -20,7 +20,7 @@ contract Platform is Ownable{
 
     // 创建项目（用户自己调用）
     function createCrowd(address _sender, string memory _name, uint256 _totalCapital, uint256 _singleCapital, uint256 _endingTimeStamp) public {
-        address crowd = address(new Crowd(_sender, _name, _totalCapital, _singleCapital, _endingTimeStamp, votingCrowdpros));
+        address crowd = address(new CrowdFunding(_sender, _name, _totalCapital, _singleCapital, _endingTimeStamp, votingCrowdpros));
         CrowdPros.push(crowd); // push 到平台的项目数组中
         sponsorCrowdPros[msg.sender].push(crowd); // push 到用户发起的项目映射中去
     }

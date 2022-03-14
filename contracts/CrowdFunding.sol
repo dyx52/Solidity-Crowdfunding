@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 import "./VoteCrowdPros.sol";
 
-contract Crowd{
+contract CrowdFunding{
     // 1、众筹项目名
     // 2、众筹资金
     // 3、众筹每笔资金
